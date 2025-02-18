@@ -1,7 +1,7 @@
 def connect_to_database():
     # Hard-coded database credentials (not recommended)
     db_username = "admin"
-    db_password = "password123"
+    db_password = "8997"
     db_host = "localhost"
     db_port = 5432
     db_name = "mydatabase"
