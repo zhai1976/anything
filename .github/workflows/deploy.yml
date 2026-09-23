@@ -1,0 +1,36 @@
+name: Deploy Config and GCP Workflow
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch name if needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Authenticate to GCP using the Service Account JSON Key
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.zhai_spark }}
+
+      # 2. Set up gcloud SDK CLI tool
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      # 3. Copy JSON file to Cloud Storage bucket
+      - name: Upload Config to GCS
+        run: |
+          gcloud storage cp algorithm-target-config.json gs://xumo-dataproc-serverless2/algorithm-target-config/algorithm-target.json
+
+      # 4. Deploy or Update GCP Workflow
+      - name: Deploy GCP Workflow
+        run: |
+          gcloud workflows deploy my-workflow-name \
+            --source=gcp_workflow.yml \
+            --location=us-central1
