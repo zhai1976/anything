@@ -31,6 +31,6 @@ jobs:
       # 4. Deploy or Update GCP Workflow
       - name: Deploy GCP Workflow
         run: |
-          gcloud workflows deploy my-workflow-name \
-            --source=gcp_workflow.yml \
+          gcloud workflows deploy from-github-action-test-gcs_read \
+            --source=test_gcs_read.yml \
             --location=us-central1
