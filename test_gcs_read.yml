@@ -1,0 +1,36 @@
+main:
+  params: [input]
+
+  steps:
+    - init:
+        assign:
+          - bucket: "zhai-temp-bucket"
+
+    - get_config:
+        call: http.get
+        args:
+          url: ${"https://storage.googleapis.com/storage/v1/b/" + bucket + "/o/" + text.url_encode("algorithm-target-config/algorithm-target.json") + "?alt=media"}
+          auth:
+            type: OAuth2
+        result: config_file
+
+    - parse_config:
+        assign:
+          - config: ${json.decode(config_file.body)}
+
+    - get_algorithm_targets:
+        assign:
+          - targetObjects: ${config.algorithms["PERSONALIZED_THOMPSON_JACCARD"].targets}
+          - targets: []
+
+    - build_target_list:
+        for:
+          value: targetObj
+          in: ${targetObjects}
+          steps:
+            - add_target:
+                assign:
+                  - targets: ${list.concat(targets, [targetObj.target])}
+
+    - return_result:
+        return: ${targets}
