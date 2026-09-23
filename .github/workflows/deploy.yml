@@ -17,6 +17,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # 0. Validate JSON syntax before doing anything else
+      - name: Validate JSON Syntax
+        run: |
+          jq . algorithm-target.json
+
       # 1. Authenticate to GCP using the Service Account JSON Key
       - name: Authenticate to GCP
         uses: google-github-actions/auth@v2
