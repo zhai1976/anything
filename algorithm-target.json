@@ -10,7 +10,7 @@
       "targets": [
         "roku-app-mds.xumo.com",
         "firetv-app-mds.xumo.com"
-      ]
+      
     },
     "RELATED_CHANNELS": {
       "targets": [
