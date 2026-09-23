@@ -4,7 +4,7 @@ main:
   steps:
     - init:
         assign:
-          - bucket: "zhai-temp-bucket"
+          - bucket: "xumo-dataproc-serverless2"
 
     - get_config:
         call: http.get
