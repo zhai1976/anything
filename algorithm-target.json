@@ -9,7 +9,7 @@
       ]
     },
     "MATRIX_FACTORIZATION": {
-      "codePath": "",
+      "codePath": "ok",
       "mainFile": "test.py",
       "targets": [
         "roku-app-mds.xumo.com",
