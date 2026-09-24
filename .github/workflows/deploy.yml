@@ -25,7 +25,7 @@ jobs:
       # 0.b Also validate JSON file to make sure no missing fields
       - name: Validate business rules
         run: |
-          python ./github/workflows/validate_config.py
+          python .github/workflows/validate_config.py
 
       # 1. Authenticate to GCP using the Service Account JSON Key
       - name: Authenticate to GCP
