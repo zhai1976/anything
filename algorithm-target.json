@@ -1,18 +1,24 @@
 {
   "algorithms": {
     "PERSONALIZED_THOMPSON_JACCARD": {
+      "codePath": "abc/def",
+      "mainFile": main.py
       "targets": [
         "10010",
         "10031"
       ]
     },
     "MATRIX_FACTORIZATION": {
+      "codePath": "",
+      "mainFile": "test.py",
       "targets": [
         "roku-app-mds.xumo.com",
         "firetv-app-mds.xumo.com"
       ]
     },
     "RELATED_CHANNELS": {
+      "codePath": "adsfa",
+      "mainFile": "w.xy",
       "targets": [
         "ALL"
       ]
