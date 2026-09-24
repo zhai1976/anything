@@ -17,10 +17,15 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 0. Validate JSON syntax before doing anything else
+      # 0.a Validate JSON syntax before doing anything else
       - name: Validate JSON Syntax
         run: |
           jq . algorithm-target.json
+
+      # 0.b Also validate JSON file to make sure no missing fields
+      - name: Validate business rules
+        run: |
+          python ./github/workflows/validate_config.py
 
       # 1. Authenticate to GCP using the Service Account JSON Key
       - name: Authenticate to GCP
