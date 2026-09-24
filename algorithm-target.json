@@ -2,7 +2,7 @@
   "algorithms": {
     "PERSONALIZED_THOMPSON_JACCARD": {
       "codePath": "abc/def",
-      "mainFile": main.py,
+      "mainFile": “main.py”,
       "targets": [
         "10010",
         "10031"
